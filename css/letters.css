@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+
+body {
+background: #1a1a1a;
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+font-family: 'Playfair Display', serif;
+transition: background 0.5s ease;
+}
+
+/* CONTAINER */
+.notes-wrapper {
+position: relative;
+width: 85vw;
+max-width: 450px;
+height: 65vh;
+perspective: 1500px;
+}
+
+/* SHEETS */
+.sheet {
+position: absolute;
+inset: 0;
+background: #fdf5e6;
+padding: 35px;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+cursor: pointer;
+border-radius: 4px;
+box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+transition: 1.2s ease;
+}
+
+#sheet-active { z-index: 2; }
+#sheet-bg { z-index: 1; opacity: 0.7; transform: scale(0.95); }
+
+/* TEXT */
+.text {
+color: #2c1e14;
+font-size: 1.15rem;
+font-style: italic;
+line-height: 1.7;
+}
+
+/* PIN */
+.pin {
+position: absolute;
+top: 15px;
+left: 50%;
+transform: translateX(-50%);
+width: 14px;
+height: 14px;
+background: #8a2a2a;
+border-radius: 50%;
+}
+
+/* DROP EFFECT */
+.torn-off {
+transform: translateY(120vh) rotate(45deg) scale(0.6);
+opacity: 0;
+}
+
+/* PAIN WARNING */
+#pain-warning {
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+color: #ffb3b3;
+font-size: 1.6rem;
+opacity: 0;
+transition: 0.5s;
+}
+
+/* FINAL TEXT */
+#final-text {
+position: absolute;
+color: #b59b7c;
+font-size: 2rem;
+opacity: 0;
+text-align: center;
+width: 90%;
+}

@@ -1,0 +1,255 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-body: 'Cormorant Garamond', Georgia, serif;
+  --color-bg: #fdfbf7;
+  --color-text: #2c2c2c;
+  --color-accent: #b59b7c;
+  --color-muted: #999;
+  --color-card: #ffffff;
+  --color-done: #e8f5ef;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* HEADER */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 64px;
+  background: rgba(253, 251, 247, 0.95);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  z-index: 100;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.logo-text {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  font-style: italic;
+  color: #1a1a1a;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-link {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1rem;
+  color: rgba(44,44,44,0.55);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  transition: color 0.3s, background 0.3s;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: #1a1a1a;
+  background: rgba(0,0,0,0.05);
+}
+
+.nav-link.active {
+  color: var(--color-accent);
+  background: rgba(181,155,124,0.08);
+}
+
+.nav-divider {
+  width: 1px;
+  height: 16px;
+  background: rgba(0,0,0,0.1);
+  margin: 0 4px;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 680px;
+  margin: auto;
+  padding: 100px 20px 80px;
+}
+
+/* SAYFA BAŞLIĞI */
+.page-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.page-header h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 400;
+  font-style: italic;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+}
+
+.page-header p {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--color-muted);
+}
+
+/* SAYAÇ */
+.counter {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 48px;
+  padding: 24px;
+  background: var(--color-card);
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,0.04);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+
+.counter-item {
+  text-align: center;
+}
+
+.counter-number {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-style: italic;
+  color: var(--color-accent);
+  display: block;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.counter-label {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  letter-spacing: 1px;
+}
+
+/* LİSTE */
+.bucket-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* MADDE */
+.bucket-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px 20px;
+  background: var(--color-card);
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.04);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.bucket-item:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  transform: translateX(4px);
+}
+
+.bucket-item.done {
+  background: var(--color-done);
+  border-color: rgba(76,175,80,0.1);
+}
+
+.bucket-item.done .item-text {
+  text-decoration: line-through;
+  color: var(--color-muted);
+}
+
+/* NUMARA */
+.item-number {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--color-accent);
+  min-width: 28px;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+.bucket-item.done .item-number {
+  color: #81c784;
+}
+
+/* METİN */
+.item-text {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--color-text);
+  line-height: 1.5;
+  transition: color 0.3s;
+  flex: 1;
+}
+
+/* TAMAMLANDI İKONU */
+.item-check {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0,0,0,0.15);
+  flex-shrink: 0;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-size: 11px;
+  color: transparent;
+}
+
+.bucket-item.done .item-check {
+  background: #81c784;
+  border-color: #81c784;
+  color: #fff;
+}
+
+/* KATEGORİ AYRAÇ */
+.category-divider {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  padding: 24px 4px 8px;
+  opacity: 0.7;
+}
+
+/* MOBİL */
+@media (max-width: 600px) {
+  .header { padding: 0 16px; }
+  .logo-text { font-size: 19px; }
+  .nav-link { font-size: 0.9rem; padding: 5px 10px; }
+  .counter { gap: 24px; }
+  .counter-number { font-size: 1.8rem; }
+}

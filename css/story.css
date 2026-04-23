@@ -1,0 +1,252 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-body: 'Cormorant Garamond', Georgia, serif;
+  --transition-mood: background-color 1.2s ease;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: #fdfbf7;
+  color: #2c2c2c;
+  transition: var(--transition-mood);
+}
+
+/* CONTAINER */
+.container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+/* SECTION */
+section {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+  padding: 40px 24px;
+  overflow: hidden;
+}
+
+/* MOOD OVERLAY */
+section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease;
+  z-index: 0;
+}
+
+section.active::before {
+  opacity: 1;
+}
+
+.mood-love::before {
+  background: radial-gradient(ellipse at 50% 30%, rgba(255,182,193,0.25), transparent 70%);
+}
+.mood-sad::before {
+  background: radial-gradient(ellipse at 50% 70%, rgba(160,195,240,0.22), transparent 70%);
+}
+.mood-dark::before {
+  background: radial-gradient(ellipse at 50% 50%, rgba(100,100,100,0.18), transparent 70%);
+}
+.mood-calm::before {
+  background: radial-gradient(ellipse at 50% 40%, rgba(140,210,170,0.2), transparent 70%);
+}
+.mood-hope::before {
+  background: radial-gradient(ellipse at 50% 60%, rgba(255,215,120,0.22), transparent 70%);
+}
+.mood-dream::before {
+  background: radial-gradient(ellipse at 50% 50%, rgba(190,160,255,0.22), transparent 70%);
+}
+.mood-fear::before {
+  background: radial-gradient(ellipse at 50% 50%, rgba(80,100,160,0.18), transparent 70%);
+}
+.mood-memory::before {
+  background: radial-gradient(ellipse at 50% 40%, rgba(200,160,110,0.2), transparent 70%);
+}
+
+/* İÇERİK */
+.img-box,
+.txt-box {
+  position: relative;
+  z-index: 2;
+}
+
+/* GÖRSEL */
+.img-box {
+  width: 80vw;
+  max-width: 480px;
+  aspect-ratio: 4 / 5;
+  border-radius: 12px;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.96) translateY(12px);
+  transition: opacity 1s ease, transform 1s ease;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+}
+
+@media (min-width: 768px) {
+  .img-box {
+    aspect-ratio: 3 / 2;
+  }
+}
+
+section.active .img-box {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* METİN */
+.txt-box {
+  max-width: 520px;
+  width: 100%;
+  margin-top: 28px;
+  text-align: center;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  line-height: 1.9;
+  color: #3a3330;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.9s ease 0.15s, transform 0.9s ease 0.15s;
+}
+
+section.active .txt-box {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+section.scene-text-only .txt-box {
+  max-width: 600px;
+  font-size: clamp(1.05rem, 2.8vw, 1.3rem);
+  margin-top: 0;
+}
+
+/* SON EKRAN LİNKİ */
+#to-letters {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: #8a6a50;
+  text-decoration: none;
+  letter-spacing: 1px;
+  border-bottom: 1px solid rgba(138,106,80,0.3);
+  padding-bottom: 3px;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+#to-letters:hover {
+  color: #5c3d25;
+  border-color: rgba(92,61,37,0.6);
+}
+
+/* SCROLL HİNT */
+.scroll-hint {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.scroll-hint.visible {
+  opacity: 1;
+}
+
+.scroll-hint span {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+.scroll-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ccc;
+  animation: bounce 1.6s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); opacity: 0.4; }
+  50%       { transform: translateY(6px); opacity: 1; }
+}
+
+/* PROGRESS BAR */
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: rgba(44,44,44,0.2);
+  width: 0%;
+  transition: width 0.4s ease;
+  z-index: 100;
+}
+
+/* GERİ BUTONU */
+#back-btn {
+  position: fixed;
+  top: 22px;
+  left: 22px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(44,44,44,0.45);
+  text-decoration: none;
+  z-index: 100;
+  transition: color 0.3s ease;
+}
+
+#back-btn:hover {
+  color: rgba(44,44,44,0.9);
+}
+
+/* SAHNE SAYACI */
+#scene-counter {
+  position: fixed;
+  top: 26px;
+  right: 24px;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: rgba(44,44,44,0.4);
+  z-index: 100;
+}

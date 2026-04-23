@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masal Gibi | 100 Şey</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/bucket.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <a href="index.html" class="logo-text">Masal Gibi</a>
+<nav class="nav">
+  <a href="bucket.html" class="nav-link">100 Şey</a>
+  <div class="nav-divider"></div>
+  <a href="stories.html" class="nav-link">Masallar</a>
+  <div class="nav-divider"></div>
+  <a href="stars.html" class="nav-link">Yıldızlar</a>
+</nav>
+  </header>
+
+  <!-- İÇERİK -->
+  <main class="container">
+
+    <div class="page-header">
+      <h1>Üniversite bitmeden yapılıcak 100 saçma şeyin listesi</h1>
+      <p>Masal gibi bir 18 Nisan akşamı başladı her şey...      Ama bitmedi daha yapılıcak yüzlerece şey var</p>
+    </div>
+
+    <div class="counter">
+      <div class="counter-item">
+        <span class="counter-number" id="count-done">0</span>
+        <span class="counter-label">tamamlandı</span>
+      </div>
+      <div class="counter-item">
+        <span class="counter-number" id="count-left">100</span>
+        <span class="counter-label">kaldı</span>
+      </div>
+      <div class="counter-item">
+        <span class="counter-number" id="count-percent">0%</span>
+        <span class="counter-label">ilerleme</span>
+      </div>
+    </div>
+
+    <div class="bucket-list" id="bucket-list"></div>
+
+  </main>
+
+  <script src="data/bucket.js"></script>
+  <script src="js/header.js"></script>
+  <script src="js/nav.js"></script>
+  <script>
+    const list = document.getElementById("bucket-list");
+
+    function updateCounter() {
+      const total   = BUCKET_LIST.length;
+      const done    = BUCKET_LIST.filter(i => i.done).length;
+      const left    = total - done;
+      const percent = Math.round((done / total) * 100);
+
+      document.getElementById("count-done").textContent    = done;
+      document.getElementById("count-left").textContent    = left;
+      document.getElementById("count-percent").textContent = percent + "%";
+    }
+
+    BUCKET_LIST.forEach(item => {
+      const el = document.createElement("div");
+      el.className = "bucket-item" + (item.done ? " done" : "");
+      el.innerHTML = `
+        <span class="item-number">${item.id}.</span>
+        <span class="item-text">${item.text}</span>
+        <span class="item-check">${item.done ? "✓" : ""}</span>
+      `;
+      list.appendChild(el);
+    });
+
+    updateCounter();
+  </script>
+
+</body>
+</html>
