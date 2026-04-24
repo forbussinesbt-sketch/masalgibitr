@@ -7,7 +7,7 @@ window.STORIES = [
   tag: "Bölüm I",
   description: "Cezalandırmak bir güçtür ve güç yalnızlaştırır, affetmek ve yönlendirmek bir erdemdir ve erdemliler yalnız kalmaz.",
   cover: "assets/images/m2.png",
-  active: true,
+  active: false,
 
   scenes: [
     {
@@ -71,7 +71,7 @@ window.STORIES = [
   tag: "Bölüm II",
   description: "İnsan hiçte hazır olmadığı bir anda hiç bilmediği bir duyguyla karşılaşırsa ne yapar? Neden en normal duygular bazıları için çok korkunçtur?",
   cover: "assets/images/m1.png",
-  active: true,
+  active: false,
 
   scenes: [    {
       type: "text",
@@ -84,7 +84,7 @@ window.STORIES = [
   tag: "Bölüm III",
   description: "Altın bir zırhın içinde toplumun takdiriyle yaşmamak mı, toplumun yargılıyıcı bakışları pahasına rüzgarı teninde hissetmek mi ? Hangisi doğru yaşamak",
   cover: "assets/images/m3.png",
-  active: true,
+  active: false,
 
   scenes: [ {
       type: "image",
