@@ -29,11 +29,10 @@ window.STARS_DATA = {
     }
   ],
   friends: [
-    { id: "f1", name: "Ayşegül", note: "Zarif ve eşsiz güzelim, en sıradan anılarımızı unutulmaz kılan detay", size: 28, active: true },
-    { id: "f2", name: "Rabia",  note: "Her bakışımda güzelliğine nazarım değer diye korktuğum şişko",    size: 35, active: true },
-    { id: "f3", name: "Nur",  note: "Kalbimi istikrarlı bir şekilde kırmaktan keyif alan sıpa",    size: 20, active: true },
-    { id: "f4", name: "Kaan",  note: "Benim etik pusulam",    size: 28, active: true },
-    { id: "f5", name: "Halime",  note: "Azim çalıkanlı ve irade konusunda idolüm.",    size: 28, active: true },
+    { id: "f1", name: "Ayşegül", note: "Zarif ve eşsiz güzelim, en sıradan anılarımızı unutulmaz kılan detay,çocukluğum.", size: 28, active: true },
+    { id: "f2", name: "Rabia",  note: "Her bakışımda güzelliğine nazarım değer diye korktuğum şişko,çocukluğum.",    size: 35, active: true },
+    { id: "f4", name: "Kaan",  note: "Benim etik pusulam.",    size: 28, active: true },
+    { id: "f5", name: "Halime",  note: "Azim, çalıkanlık ve irade konusunda idolüm.",    size: 28, active: true },
     { id: "f6", name: "Furkan",  note: "Sadece kendine talihsizlik getiren dostum",    size: 28, active: false },
     { id: "f7", name: "TAŞ",  note: "",    size: 35, active: false },
     { id: "f8", name: "Y",  note: "",    size: 25, active: false },
